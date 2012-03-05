@@ -3,7 +3,6 @@
 use strict;
 use warnings;
 use Getopt::Std;
-use Data::Dumper;
 $Getopt::Std::STANDARD_HELP_VERSION = 1;
 # }}}
 
@@ -168,7 +167,8 @@ if (not defined $saveas and not defined $opts{'o'}) {
 # }}}
 
 if ($encryption eq "wpae") {
-  print "What inner encryption should I use for the WPA Enterprise [PEAP]? ";
+  print "What inner encryption should I use for the WPA Enterprise?\n";
+  print "Common choices are PEAP or TTLS [PEAP]: ";
   my $e = <STDIN>;
   chomp $e;
   $e = 'PEAP' if $e =~ /^\s*$/;
@@ -186,6 +186,7 @@ printf $h "SECURITY='%s'\n", $encryption ? ($encryption =~ /wpae/ ? 'wpa-configs
 
 if ($encryption =~ /wpae-(\w+)/) {
   my $type = $1;
+  # {{{ CONFIGSECTION
   print $h "CONFIGSECTION='\n";
   # Basics
   printf $h "\tssid=\"%s\"\n", $essid;
@@ -208,6 +209,7 @@ if ($encryption =~ /wpae-(\w+)/) {
 } else {
   printf $h "ESSID='%s'\n", $essid;
   printf $h "KEY='%s'\n", $password if $encryption;
+  # }}}
 }
 
 printf $h "IP='dhcp'\n";
