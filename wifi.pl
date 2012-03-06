@@ -24,7 +24,7 @@ sub HELP_MESSAGE {
 
 sub VERSION_MESSAGE {
   my $h = shift;
-  print $h "wifi-connect version 0.1a\n";
+  print $h "wifi-connect version 0.2\n";
 }
 # }}}
 
