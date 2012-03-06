@@ -115,7 +115,7 @@ if (not defined $essid) {
 
   for (my $i = 0; $i < @networks; $i++) {
     my $n = $networks[$i];
-    printf "%02d: %-30s [%1s] (%s)\n", $i + 1, $n->{'essid'}, quality($n), $n->{'encryption'} || 'Open';
+    printf "%02d: %-30s [%1s] (%s, %d%%)\n", $i + 1, $n->{'essid'}, quality($n), $n->{'encryption'} || 'Open', $n->{'quality'};
   }
 
   my $selection = undef;
