@@ -218,8 +218,10 @@ if ($encryption =~ /wpae-(\w+)/) {
   printf $h "\tpassword=\"%s\"\n", $password;
 
   # TODO: PAP vs MD5 for TTLS
-  printf $h "\tphase1=\"peaplabel=0\"'\n", if $type eq 'PEAP';
-  printf $h "\tphase2=\"auth=%s\"'\n", $type eq 'PEAP' ? 'MSCHAPV2' : 'PAP';
+  printf $h "\tphase1=\"peaplabel=0\"\n", if $type eq 'PEAP';
+  printf $h "\tphase2=\"auth=%s\"\n", $type eq 'PEAP' ? 'MSCHAPV2' : 'PAP';
+
+  print $h "'\n";
 } else {
   printf $h "ESSID='%s'\n", $essid;
   printf $h "KEY='%s'\n", $password if $encryption;
