@@ -1,0 +1,5 @@
+Connecting to wireless networks is a bit of a hassle at the moment with netcfg.
+First, you have to run iwlist scan, then analyze its output, copy one of the /etc/network.d/examples/wireless-* files into /etc/network.d and then modify it to fit your connection.
+This becomes cumbersome when you've done it a couple of times, so I've written a fairly simple Perl script that does all the heavy lifting for you.
+It even shows a pretty list of all available networks, with signal level and authentication type.
+No dependencies apart from perl and iwlist (and netcfg to do the connecting).
